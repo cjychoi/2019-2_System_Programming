@@ -14,6 +14,8 @@
 
 ### 191007 - Ch6. Programming for Humans - Terminal Control and Signals
 
-### 191014 - Ch7. Event Driven Programming
+### 191021 - Midterm Exam
 
-### 191021 - Ch8. Processes and Programs - Studying sh
+### 191028 - Ch7. Event Driven Programming
+
+### 191104 - Ch8. Processes and Programs - Studying sh

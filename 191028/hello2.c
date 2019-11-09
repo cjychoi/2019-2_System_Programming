@@ -16,8 +16,8 @@ int main()
 
 	for (i = 0; i < LINES; i++) {
 		move(i, i + i);
-		if (i % 2 == 1)
-			standout();
+		if (i % 2 == 1)					// odd number
+			standout();					// reverse background color - highlight
 		addstr("Hello, world");
 		if (i % 2 == 1)
 			standend();

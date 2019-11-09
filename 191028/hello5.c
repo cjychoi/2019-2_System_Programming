@@ -21,16 +21,16 @@ int main()
 
 	while (1) {
 		move(ROW, pos);
-		addstr(message);		// draw string
+		addstr(message);					// draw string
 		move(LINES - 1, COLS - 1);	//park the cursor
-		refresh();					// show string
+		refresh();								// show string
 		sleep(1);
 	
-		move(ROW, pos);		// erase string
+		move(ROW, pos);					// erase string
 		addstr(blank);
-
-		pos += dir;				// advance position
-		if (pos >= RIGHTEDGE)	// check for bounce
+		
+		pos += dir;							// advance position
+		if (pos >= RIGHTEDGE)		// check for bounce
 			dir = -1;
 		if (pos <= LEFTEDGE)
 			dir = +1;

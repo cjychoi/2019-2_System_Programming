@@ -11,7 +11,7 @@ int main()
 {
 	int i;
 
-	initscr();	// turn on curses
+	initscr();	// turn on curses 
 	clear();
 
 	for (i = 0; i < LINES; i++) {
@@ -21,8 +21,9 @@ int main()
 		addstr("Hello, world");
 		if (i % 2 == 1)
 			standend();
-		sleep(1);
-		refresh();
+
+		sleep(1);	// block process for 1 sec
+		refresh();	// print sequentially
 	}
 
 	endwin();

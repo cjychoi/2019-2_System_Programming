@@ -110,3 +110,14 @@ $ sh, ps
 ```c
 fork(), exec(), wait(), exit()
 ```
+
+### 191111 - Ch10-1. I/O Redirection
+- I/O Redirection: What and why?
+- Definitions of standard input, output, and error
+- Redirecting stanard I/O to files
+- Using fork to redirect I/O for other programs
+- **Pipes**
+- Using fork with pipes
+```c
+dup(), dup2(), pipe
+```

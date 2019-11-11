@@ -115,7 +115,7 @@ $ sh, ps
 fork(), exec(), wait(), exit()
 ```
 
-### 191111 - Ch10-1. I/O Redirection
+### 191111 - Ch10_1. I/O Redirection
 - I/O Redirection: What and why?
 - Definitions of standard input, output, and error
 - Redirecting stanard I/O to files

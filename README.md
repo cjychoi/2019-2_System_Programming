@@ -5,6 +5,10 @@
 ### The Operating System Architecture
 ![Operating System Architecture](https://user-images.githubusercontent.com/54846646/68307643-f3c1c400-00ee-11ea-8a8d-a1e5c0e365e4.JPG)
 
+
+
+
+
 ### 190902 - Ch0. Introduction, Ch1. Linux for Beginners
 - Terminal, shell, Vi editor
          
@@ -109,4 +113,15 @@ $ sh, ps
 ```
 ```c
 fork(), exec(), wait(), exit()
+```
+
+### 191111 - Ch10_1. I/O Redirection
+- I/O Redirection: What and why?
+- Definitions of standard input, output, and error
+- Redirecting stanard I/O to files
+- Using fork to redirect I/O for other programs
+- **Pipes**
+- Using fork with pipes
+```c
+dup(), dup2(), pipe
 ```

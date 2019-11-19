@@ -125,3 +125,5 @@ fork(), exec(), wait(), exit()
 ```c
 dup(), dup2(), pipe
 ```
+
+

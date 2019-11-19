@@ -29,7 +29,7 @@ void child_code(int delay)
 /* parent waits for child then prints a message */
 void parent_code(int childpid)
 {
-	int wait_rv;
+	int wait_rv;	// return value from wait()
 	wait_rv = wait(NULL); 
 	printf("done waiting for %d. wait returned: %d\n", childpid, wait_rv);
 }

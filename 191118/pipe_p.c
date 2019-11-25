@@ -17,16 +17,16 @@
 
 main(int ac, char **av)
 {
-	int	thepipe[2],		/* two file descriptors */
-		newfd,			/* useful for pipes	*/
-		pid;			/* and the pid		*/
+	int		thepipe[2],		/* two file descriptors */
+			newfd,				/* useful for pipes	*/
+			pid;					/* and the pid		*/
 
 	if ( ac !=3 ) {
 		fprintf( stderr, "usage : pipe cmd1 cmd2\n" );
 		exit(1);
 	}
     
-	if (pipe(thepipe == -1))		// get a pipe
+	if (pipe(thepipe) == -1)		// get a pipe
 		oops("Cannot get a pipe", 1);
 
 	/* ------------------------------------------------------------ */

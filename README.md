@@ -115,15 +115,40 @@ $ sh, ps
 fork(), exec(), wait(), exit()
 ```
 
-### 191111 - Ch10_1. I/O Redirection
+### 191111 - Ch10-1. I/O Redirection
 - I/O Redirection: What and why?
 - Definitions of standard input, output, and error
 - Redirecting stanard I/O to files
 - Using fork to redirect I/O for other programs
 - **Pipes**
-- Using fork with pipes
 ```c
-dup(), dup2(), pipe
+dup(), dup2()
 ```
 
+### 191118 - Ch10-2. Pipes
+- Creating a Pipe
+- Using **fork** to share a pipe
+```c
+pipe()
+```
+
+### 191118~191125 - Ch11. Connecting to Processes Near and Far - Servers and Sockets
+- Client/Server programming using pipes and sockets
+- Interprocess communication and client/server design
+- The idea andt echniques of socket programming
+```c
+popen()
+socket(), bind(), listen(), accept(), read()/write(), close()
+```
+
+### 191125 - Ch14. Threads Concurrent Functions
+- Process
+- Concurrency vs. Parallelism
+- Threads of Execution
+- Inter-thread Cooperation
+- Comparing Threads with Processes
+- Mutex
+- Inter-thread Notification
+```c
+pthread_create(), pthread_join(), pthread_cond_wait(), pthread_cond_signal()
 

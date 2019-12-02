@@ -1,0 +1,17 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CC	Makefile	/^CC = gcc $/;"	m
+CFLAG	Makefile	/^CFLAG = -Wall -g $/;"	m
+INCLUDES	Makefile	/^INCLUDES = -I..\/include$/;"	m
+LFLAGS	Makefile	/^LFLAGS = -L\/home\/test\/lib -L..\/lib$/;"	m
+LIBS	Makefile	/^LIBS = -lm $/;"	m
+OBJS	Makefile	/^OBJS = $(SRCS:.c=.o)$/;"	m
+SRCS	Makefile	/^SRCS = main.c factorial.c hello.c$/;"	m
+TARGET	Makefile	/^TARGET = hello$/;"	m
+factorial	factorial.c	/^int factorial(int n){$/;"	f
+main	main.c	/^int main(){$/;"	f
+print_hello	hello.c	/^void print_hello(){$/;"	f

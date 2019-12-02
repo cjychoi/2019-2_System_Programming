@@ -1,0 +1,19 @@
+CFLAGS = -Wall -g 
+CC = gcc 
+LIBS = -lm 
+
+hello: main.o factorial.o hello.o
+	  ${CC} ${CFLAGS} -o hello main.o factorial.o hello.o ${LIBS} 
+
+main.o : main.c
+	${CC} ${CFLAGS} -c main.c -o main.o 
+
+factorial.o : factorial.c
+	${CC} ${CFLAGS} -c factorial.c -o factorial.o
+
+hello.o : hello.c
+	${CC} ${CFLAGS} -c hello.c -o hello.o
+
+clean: 
+	   rm -f factorial.o hello.o main.o hello
+

@@ -50,7 +50,7 @@ FILE *popen(const char *command, const char *mode)
 	if (close(pfp[parent_end]) == -1)
 		exit(1); // do not return 
 
-	if (dup2(pfp[child_end], child_end) == -1)
+	if (dup2(pfp[child_end], child_end) == -1)		/* child -> fd1 -> pipe -> parent */
 		exit(1);
 
 	if (close(pfp[child_end]) == -1)	// done with this one

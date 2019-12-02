@@ -12,6 +12,7 @@
 #include <sys/wait.h>
 #include <sys/time.h>
 #include <pthread.h>
+#include <ctype.h>
 
 #define MAXTHREAD 8
 
@@ -27,9 +28,13 @@ struct thread_data
 
 /* initialize global variables here if needed */
 
+int total;
+pthread_mutex_t counter_lock = PTHREAD_MUTEX_INITIALIZER;
+
+void *count_words(void *);
 
 /* main function*/
-main(int argc, char **argv)
+int main(int argc, char **argv)
 {
     FILE* fp;
     int nthreads, x, id;
@@ -70,7 +75,6 @@ main(int argc, char **argv)
     fread(buff,1,len, fp);
 
 
-
     /* store the block information in the argument structure */
     for(i=0;i<nthreads;i++)
     {
@@ -87,20 +91,47 @@ main(int argc, char **argv)
 
 
     /* create threads and wait until all threads complete their task */
-    /* 
-     * Implement this part
-     *
-     */
+    for(i=0; i<nthreads; i++)
+    {
+        pthread_create(&threads[i], NULL, count_words, (void *)&data[i]);
+    }
 
- 
+    for(i=0; i<nthreads; i++)
+    {
+        pthread_join(threads[i], NULL);
+    }
+
     fclose(fp);
     free(buff);
-
+    free(threads);
+   
     /* calculate the elapsed time */
 	gettimeofday(&end_time, NULL); 
 	double operating_time = (double)(end_time.tv_sec)+(double)(end_time.tv_usec)/1000000.0-(double)(start_time.tv_sec)-(double)(start_time.tv_usec)/1000000.0;
 
     /* print the total number of words in the file */
-	printf("[MAIN]Elapsed: %f seconds\n", (double)operating_time);
+    printf("[MAIN]  total word count: %d\n", total);
+	printf("[MAIN]  Elapsed: %lf seconds\n", (double)operating_time);
 }
 
+void *count_words(void *a)
+{
+    struct thread_data *args = a;
+    int prevc = '\0';
+    int i = 0;
+
+    for(i = args->start; i < (args->start + args->block_size); i++)
+    {
+        if(!isalnum(args->buff[i]) && isalnum(prevc))
+            args->counter++;
+        
+        prevc = args->buff[i];
+    }
+
+    pthread_mutex_lock(&counter_lock);    
+    total+=(int)(args->counter);
+    pthread_mutex_unlock(&counter_lock);
+    
+    printf("[THREAD]  the number of words : %.0lf\n", (double)(args->counter));
+    
+}

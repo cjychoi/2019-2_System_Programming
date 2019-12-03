@@ -14,9 +14,9 @@ void main()
 
 	//create a thread
 	pthread_create(&t1, NULL, print_count, NULL);
-	for (i = 0; i < NUM; i++) {
+	for (i = 0; i < NUM; i++) {	/* Main Thread */
 		counter++;
-		sleep(1);
+		sleep(2);	
 	}
 	// wait for a thread to be completed
 	pthread_join(t1, NULL);
@@ -28,7 +28,7 @@ void* print_count(void* m)
 	int i;
 	for (i = 0; i < NUM; i++) {
 		printf("count = %d\n", counter);
-		sleep(2);
+		sleep(1);
 	}
 	return NULL;
 }

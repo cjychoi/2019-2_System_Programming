@@ -36,7 +36,7 @@ void* count_words(void* f)
 	if ((fp = fopen(filename, "r")) != NULL) {
 		while ((c = getc(fp)) != EOF) {
 			if (!isalnum(c) && isalnum(prevc)) {
-				pthread_mutex_lock(&counter_lock);
+				pthread_mutex_lock(&counter_lock);		/* 한 번에 하나의 thread만 계산하도록 mutex 사용 */
 				total_words++;
 				pthread_mutex_unlodk(&counter_lock);
 			}

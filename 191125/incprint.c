@@ -7,7 +7,7 @@
 int counter = 0;
 void* print_count(void*);		//its function
 
-void main()
+int main()
 {
 	pthread_t t1;
 	int i;

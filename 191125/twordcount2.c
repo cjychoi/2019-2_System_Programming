@@ -1,4 +1,5 @@
-/* twordcount1.c - threaded word counter for two files. ver 1.0*/
+/* twordcount2.c - threaded word counter for two files.
+	ver 2.0: uses mutex to lock counter */
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>

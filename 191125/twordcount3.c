@@ -1,4 +1,5 @@
-/* twordcount3.c - threaded word counter for two files, ver3: one counter per file */
+/* twordcount3.c - threaded word counter for two files, 
+							- ver3: one counter per file */
 
 #include <stdio.h>
 #include <stdlib.h>

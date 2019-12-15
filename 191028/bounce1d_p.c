@@ -66,7 +66,7 @@ int main(void)
 
 void move_msg(int signum)
 {
-	signal(SIGALRM, move_msg);
+	signal(SIGALRM, move_msg);		/* reset, just in case : mouse trap mode일 때 초기화 되기 때문에 handler를 다시 등록 */
 	move(row, col);
 	addstr(BLANK);
 	col += dir;

@@ -16,7 +16,7 @@
 
 int main(int ac, char *av[])
 {
-	struct sockaddr_in saddr;	/* build our address here	*/
+	struct sockaddr_in saddr;	/* build our address here	*/	// IP Port Number 저장
 	struct hostent *hp;		/* this part of our		*/
 	char hostname[HOSTLEN];		/* address			*/
 	int sock_id, sock_fd;		/* line id, file descriptor	*/
@@ -25,21 +25,21 @@ int main(int ac, char *av[])
 	time_t thetime;			/* the time we report		*/
     
 	/* Step 1: ask kernel for a socket */
-	sock_id = socket(PF_INET, SOCK_STREAM, 0);
+	sock_id = socket(PF_INET, SOCK_STREAM, 0);	// 소켓 생성
 	if (sock_id == -1)
 		oops("socket");
 
 	/* Step 2: bind address to socket. Address is host, port */
-	bzero ( (void*) &saddr, sizeof(saddr) );	// clear out struct
+	bzero ( (void*) &saddr, sizeof(saddr) );	// clear out struct - 전부 0으로 초기화
 	
-	gethostname(hostname, HOSTLEN);	// where am I?
-	hp = gethostbyname(hostname);			// get info about host
+	gethostname(hostname, HOSTLEN);	// where am I?	- 현재 컴퓨터의 hostname
+	hp = gethostbyname(hostname);			// get info about host - hostname을 통해 host에 대한 정보(address 등) 읽어오기
 
-	bcopy( (void*) hp->h_addr, (void*) &saddr.sin_addr, hp->h_length);
+	bcopy( (void*) hp->h_addr, (void*) &saddr.sin_addr, hp->h_length);	// h_addr: IP 주소 -> saddr.sin_addr에 저장
 	saddr.sin_port = htons(PORTNUM);		// fill in socket port
-	saddr.sin_family = AF_INET;					// fill in addr family
+	saddr.sin_family = AF_INET;					// fill in addr family - IP주소의 형식 지정
 
-	if(bind(sock_id, (struct sockaddr *) &saddr, sizeof(saddr)) != 0)
+	if(bind(sock_id, (struct sockaddr *) &saddr, sizeof(saddr)) != 0)	// 주소 할당
 		oops("bind");
 
 
@@ -49,19 +49,19 @@ int main(int ac, char *av[])
 
 	/* main loop: accept(), write(), close() */
 
-	while (1) {
+	while (1) {	// 각 client 마다 accept() 실행 위해 반복
 		sock_fd = accept(sock_id, NULL, NULL);		// wait for call
 		printf("Wow! got a call!\n");
 		if (sock_fd == -1)
 			oops("accept");		// error getting calls
 
-		sock_fp = fdopen(sock_fd, "w");	// we'll write to the
+		sock_fp = fdopen(sock_fd, "w");	// we'll write to the - filestream을 생성하여 file pointer 반환 - 소켓으로 결과 출력, 전달
 		if (sock_fp == NULL)		// socket as a stream
 			oops("fdopen");			// unless we can't
 
 		thetime = time(NULL);		// get time
 		// and convert to string
-		fprintf(sock_fp, "The time here is ..");
+		fprintf(sock_fp, "The time here is ..");		// client에게 전송
 		fprintf(sock_fp, "%s", ctime(&thetime));
 		fclose(sock_fp);		// release connection
 	}

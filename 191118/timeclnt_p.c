@@ -14,7 +14,7 @@
 
 int main(int ac, char *av[])
 {
-	struct	sockaddr_in servadd;	/* the number to call	*/
+	struct	sockaddr_in servadd;	/* the number to call - 접속할 서버의 주소 정보*/
 	struct	hostent *hp;		/* used to get number	*/
 	int	sock_id/*, sock_fd*/;	/* the socket and fd	*/
 	char	message[BUFSIZ];	/* to receive message	*/
